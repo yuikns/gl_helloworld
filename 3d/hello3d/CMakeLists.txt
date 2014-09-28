@@ -34,10 +34,6 @@ INCLUDE_DIRECTORIES(
 LINK_DIRECTORIES(
     ${PROJECT_BINARY_DIR}/lib
     #${PROJECT_BINARY_DIR}/lib64
-    #/usr/local/lib
-    #/usr/local/lib64
-    #/usr/lib
-    #/usr/lib64
 )
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR})

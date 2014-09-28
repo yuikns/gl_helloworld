@@ -1,0 +1,4 @@
+/Users/yu/Workspace/res/script/c/opengl/hello3d/build/src/CMakeFiles/helloworld.dir
+/Users/yu/Workspace/res/script/c/opengl/hello3d/build/lib/iniparser/CMakeFiles/iniparser.dir
+/Users/yu/Workspace/res/script/c/opengl/hello3d/build/lib/iniparser/CMakeFiles/iniparser_static.dir
+/Users/yu/Workspace/res/script/c/opengl/hello3d/build/src/CMakeFiles/relfiles.dir

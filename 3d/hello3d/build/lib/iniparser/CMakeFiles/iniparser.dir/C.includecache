@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../include/ini.h
+stdio.h
+-
+
+/Users/yu/Workspace/res/script/c/opengl/hello3d/lib/iniparser/ini.c
+stdio.h
+-
+ctype.h
+-
+string.h
+-
+ini.h
+/Users/yu/Workspace/res/script/c/opengl/hello3d/lib/iniparser/ini.h
+stdlib.h
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/cc   -O3 -Wall -Wl,-search_paths_first -Wl,-headerpad_max_install_names   CMakeFiles/helloworld.dir/helloworld.c.o  -o ../helloworld  -L/Users/yu/Workspace/res/script/c/opengl/hello3d/build/lib  ../lib/librelfiles.a ../lib/libiniparser.1.0.dylib -lGL -lGLU -lglut -lm -Wl,-rpath,/Users/yu/Workspace/res/script/c/opengl/hello3d/build/lib 

@@ -19,28 +19,39 @@ float pos[3] = {0,0,0};
 int i = 0;
 int mode = 0;
 
+
+int fullScreen = 0;
+int saved_width = 800;
+int saved_height = 600;
+int saved_pos_x = 100;
+int saved_pos_y = 100;
+
 //glutReshapeFunc
 void ReshapeABSSence(int w,int h)
 {
-	//float nRange = 300.0f;
+	if(!fullScreen)
+	{
+		saved_width = w;
+		saved_height = h;
+	}
+	
 	if(h == 0) h = 1;
-	//float nRatio = w / h;
 	glViewport(0,0,(GLsizei)w,(GLsizei)h);
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
-	//if(w <= h)
-	//	glOrtho(-nRange,nRange,-nRange / nRatio,nRange / nRatio,-nRange,nRange);
-	//else
-	//	glOrtho(-nRange * nRatio,nRange * nRatio,-nRange,nRange,-nRange,nRange);
-	//glMatrixMode(GL_MODELVIEW);
-	//glLoadIdentity();
-	
 	gluOrtho2D(0.0,(GLdouble)w,0.0,(GLdouble)h);
 }
 
 //
 void ReshapeCenterSence(int w,int h)
 {
+	if(!fullScreen)
+	{
+		saved_width = w;
+		saved_height = h;
+	}
+	//int saved_pos_x = 100;
+	//int saved_pos_y = 100;
 	float nRange = 300.0f;
 	if(h == 0) h = 1;
 	float nRatio = w / h;
@@ -58,7 +69,7 @@ void ReshapeCenterSence(int w,int h)
 
 void setupRC(void)
 {
-	glClearColor(0.0,0.0,0.0,1.0f);
+	glClearColor(0.9,0.9,1.0,1.0f);
 }
 
 float colorPos(float x)
@@ -110,7 +121,7 @@ void DisplaySence(void)
 }
 
 
-int fullScreen = 0;
+
 void KeyboardSence(unsigned char key,int x,int y)
 {
 	printf("%c(%d),%d,%d\n",key,key,x,y);   
@@ -130,14 +141,16 @@ void KeyboardSence(unsigned char key,int x,int y)
 	 
         if(fullScreen)
         {
+        	
                 glutFullScreen();
         }
         else
-        {                
-                glutReshapeWindow(800,600);
-                glutPositionWindow(100,100);
+        {
+                glutReshapeWindow(saved_width,saved_height);
+                glutPositionWindow(saved_pos_x,saved_pos_y);
         }
 }
+
 
 void MouseSence(int button,int state,int x,int y)
 {
@@ -145,25 +158,42 @@ void MouseSence(int button,int state,int x,int y)
 	switch(button)
 	{
 	case 0: // click
-		printf("click %s (%d,%d)\n",state?"up":"down",x,y);
+		printf("click %s (%d,%d)",state?"up":"down",x,y);
 		break;
 	case 1: // middle click
-		printf("middle click %s (%d,%d)\n",state?"up":"down",x,y);
+		printf("middle click %s (%d,%d)",state?"up":"down",x,y);
 		break;
 	case 2: // right click
-		printf("right click %s (%d,%d)\n",state?"up":"down",x,y);
+		printf("right click %s (%d,%d)",state?"up":"down",x,y);
 		break;
 	case 3: //roll up
-		printf("roll up %s (%d,%d)\n",state?"up":"down",x,y);
+		printf("roll up %s (%d,%d)",state?"up":"down",x,y);
 		break;
 	case 4: //roll down
-		printf("roll down %s (%d,%d)\n",state?"up":"down",x,y);
+		printf("roll down %s (%d,%d)",state?"up":"down",x,y);
 		break;
+	default :
+		printf("unknown button::%d (%d,%d)",button,x,y);
+	}
+	if(state) // state : 0) down 1) up
+	{
+		putchar('\n');
 	}
 	//printf("%d|%d|%d|%d\n",button,state,x,y);
 	fflush(NULL);
 }
 
+void MotionSence(int x, int y)
+{
+	printf("<%d,%d>",x,y);
+	fflush(NULL);
+}
+
+void EntrySence(int state)
+{
+	printf("::%s\n",state?"in":"out");
+	fflush(NULL);
+}
 
 void TimerFunction(int value)
 {
@@ -202,6 +232,8 @@ int main(int argc,char *argv[])
 	glutReshapeFunc(ReshapeCenterSence);
 	glutKeyboardFunc(KeyboardSence);
 	glutMouseFunc(MouseSence);
+	glutMotionFunc(MotionSence);
+	glutEntryFunc(EntrySence);
 
 	setupRC();
 	glutTimerFunc(200,TimerFunction,1);

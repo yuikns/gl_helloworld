@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../libiniparser.a  CMakeFiles/iniparser_static.dir/ini.c.o
+/usr/bin/ranlib ../libiniparser.a

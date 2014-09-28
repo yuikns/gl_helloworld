@@ -1,0 +1,2 @@
+/usr/bin/ar cr ../lib/librelfiles.a  CMakeFiles/relfiles.dir/helloworld.c.o
+/usr/bin/ranlib ../lib/librelfiles.a

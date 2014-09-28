@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/yu/Workspace/res/script/c/opengl/hello3d/src/helloworld.c
+Glut/glut.h
+-
+GLUT/glut.h
+-
+GL/glut.h
+-
+stdio.h
+-
+math.h
+-
+
